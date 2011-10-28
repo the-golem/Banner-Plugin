@@ -11,36 +11,36 @@
 if (!defined('IN_CMS')) { exit(); }
 
 ?>
-<h1><a href="<?=get_url('plugin/banner'); ?>">Banners</a></h1>
+<h1><a href="<?php echo get_url('plugin/banner'); ?>">Banners</a></h1>
 <table id="files-list" class="index" cellpadding="0" cellspacing="0" border="0">
   <thead>
     <tr>
-      <th class="name"><?=__('Name'); ?></th>
-      <th class="dimensions"><?=__('Dimensions'); ?></th>
-      <th class="dcount"><?=__('Displays'); ?></th>
-      <th class="dcount"><?=__('Clicks'); ?></th>
-      <th class="ctr"><?=__('CTR');?></th>
-      <th class="created"><?=__('Created'); ?></th>
-      <th class="expires"><?=__('Expires'); ?></th>
-      <th class="action" style="width:50px;"><?=__('Action');?></th>
+      <th class="name"><?php echo __('Name'); ?></th>
+      <th class="dimensions"><?php echo __('Dimensions'); ?></th>
+      <th class="dcount"><?php echo __('Displays'); ?></th>
+      <th class="dcount"><?php echo __('Clicks'); ?></th>
+      <th class="ctr"><?php echo __('CTR');?></th>
+      <th class="created"><?php echo __('Created'); ?></th>
+      <th class="expires"><?php echo __('Expires'); ?></th>
+      <th class="action" style="width:50px;"><?php echo __('Action');?></th>
     </tr>
   </thead>
   <tbody>
 <?php
-foreach ($banners as $banner):
+    foreach ($banners as $banner):
 	$name = htmlspecialchars($banner->name);
 ?>
-	<tr class="<?=odd_even(); ?>">
-		<td><a href="<?=get_url('plugin/banner/banner_edit/'.$banner->id); ?>"><?=$banner->name; ?></a></td>
-		<td><code><?="{$banner->width}x{$banner->height}"; ?></code></td>
-		<td><code><?=$banner->dcount; ?></code></td>
-		<td><code><?=$banner->ccount; ?></code></td>
-		<td><code><?=round(($banner->ccount/$banner->dcount)*100,1);?>%</code></td>
-		<td><code><?=$banner->created; ?></code></td>
-		<td><code><?=$banner->expires; ?></code></td>
+	<tr class="<?php echo odd_even(); ?>">
+		<td><a href="<?php echo get_url('plugin/banner/banner_edit/'.$banner->id); ?>"><?php echo $banner->name; ?></a></td>
+		<td><code><?php echo "{$banner->width}x{$banner->height}"; ?></code></td>
+		<td><code><?php echo $banner->dcount; ?></code></td>
+		<td><code><?php echo $banner->ccount; ?></code></td>
+		<td><code><?php echo round(($banner->ccount/$banner->dcount)*100,1);?>%</code></td>
+		<td><code><?php echo $banner->created; ?></code></td>
+		<td><code><?php echo $banner->expires; ?></code></td>
 		<td>
-			<a class="edit-link" name="<?=$name;?>" href="<?=get_url('plugin/banner/banner_edit/'.$banner->id); ?>"><img src="/wolf/admin/images/icon-rename.gif" alt="edit icon" title="Edit Banner"></a>
-			<a class="delete-link" name="<?=$name;?>" href="<?=get_url('plugin/banner/banner_delete/'.$banner->id); ?>"><img src="/wolf/admin/images/icon-remove.gif" alt="delete file icon" title="Delete Banner"></a>
+			<a class="edit-link" name="<?php echo $name;?>" href="<?php echo get_url('plugin/banner/banner_edit/'.$banner->id); ?>"><img src="/wolf/admin/images/icon-rename.gif" alt="edit icon" title="Edit Banner"></a>
+			<a class="delete-link" name="<?php echo $name;?>" href="<?php echo get_url('plugin/banner/banner_delete/'.$banner->id); ?>"><img src="/wolf/admin/images/icon-remove.gif" alt="delete file icon" title="Delete Banner"></a>
 		</td>
 	</tr>
 <?php endforeach; ?>
